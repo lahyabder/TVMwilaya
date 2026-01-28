@@ -80,7 +80,7 @@ export default function LoginPage() {
                         disabled={loading}
                         className="w-full py-2 px-4 bg-tvm-blue text-white rounded hover:bg-tvm-blue-light transition disabled:opacity-50"
                     >
-                        {loading ? t('loading') : t('login_subtitle')}
+                        {loading ? t('loading') : t('sign_in')}
                     </button>
                 </form>
             </div>
