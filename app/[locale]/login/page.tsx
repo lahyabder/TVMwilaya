@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/routing';
-import { signIn } from 'next-auth/react';
+// import { signIn } from 'next-auth/react';
 
 export default function LoginPage() {
     const t = useTranslations('Auth');

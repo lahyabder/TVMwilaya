@@ -5,7 +5,7 @@ import { Link, usePathname } from '@/i18n/routing';
 import { Home, MapPin, Users, PieChart, FileText, Settings, LogOut } from 'lucide-react';
 import clsx from 'clsx';
 import { use } from 'react';
-import { useSession, signOut } from 'next-auth/react';
+// import { useSession, signOut } from 'next-auth/react';
 
 // Layout can be async in Server Components, but this file has 'use client' at top?
 // Ah, 'use client' means it's a Client Component. Client Components CANNOT be async.
@@ -32,8 +32,12 @@ export default function AdminLayout({
     const tCommon = useTranslations('Common');
     const pathname = usePathname();
 
-    const { data: session } = useSession();
-    const role = session?.user?.role;
+    // const { data: session } = useSession();
+    // const role = session?.user?.role;
+
+    // FAKE AUTH: Assume Admin
+    const role = 'ADMIN_FINANCE';
+    const userName = 'Admin User';
 
     const allNavigation = [
         { name: tNav('dashboard'), href: '/admin', icon: Home, roles: ['ADMIN_FINANCE'] },
@@ -45,6 +49,12 @@ export default function AdminLayout({
     ];
 
     const navigation = allNavigation.filter(item => !role || item.roles.includes(role));
+
+    const handleLogout = () => {
+        // Clear cookie manually (or call an API to do it)
+        document.cookie = "tvm_auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/';
+    }
 
     return (
         <div className="flex h-screen bg-gray-50 direction-rtl">
@@ -78,7 +88,7 @@ export default function AdminLayout({
 
                 <div className="p-4 border-t border-blue-800">
                     <button
-                        onClick={() => signOut({ callbackUrl: '/' })}
+                        onClick={handleLogout}
                         className="flex items-center w-full px-4 py-2 text-sm text-blue-200 hover:text-white transition-colors"
                     >
                         <LogOut className={clsx("w-5 h-5", locale === 'ar' ? 'ml-3' : 'mr-3')} />
@@ -95,13 +105,13 @@ export default function AdminLayout({
                     </h2>
                     <div className="flex items-center gap-4">
                         <div className="text-right">
-                            <div className="text-sm font-medium text-gray-900">{session?.user?.name}</div>
+                            <div className="text-sm font-medium text-gray-900">{userName}</div>
                             <div className="text-xs text-gray-500">
                                 {role === 'ADMIN_FINANCE' ? t('role_admin') : t('role_manager')}
                             </div>
                         </div>
                         <div className="w-8 h-8 bg-tvm-blue/10 text-tvm-blue rounded-full flex items-center justify-center font-bold">
-                            {session?.user?.name?.charAt(0) || 'U'}
+                            A
                         </div>
                     </div>
                 </header>

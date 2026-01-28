@@ -18,7 +18,8 @@
     "Auth": {
         "welcome": "Bienvenue",
         "login_subtitle": "Veuillez vous connecter pour continuer",
-        "sign_in": "Se connecter"
+        "sign_in": "Se connecter",
+        "loading": "Chargement..."
     },
     "AdminLayout": {
         "title": "Admin TVM",
