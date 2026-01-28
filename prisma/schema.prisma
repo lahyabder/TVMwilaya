@@ -8,67 +8,86 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String     @id @default(uuid())
+  email     String     @unique
   password  String
   name      String
-  role      String   // ADMIN_FINANCE, BRANCH_MANAGER
+  role      String // ADMIN_FINANCE, BRANCH_MANAGER
   branchId  String?
-  branch    Branch?  @relation(fields: [branchId], references: [id])
+  branch    Branch?    @relation(fields: [branchId], references: [id])
   expenses  Expense[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  deletedAt DateTime?
+  auditLogs AuditLog[]
 }
 
 model Branch {
-  id        String   @id @default(uuid())
-  name      String   // e.g., "TVM Nouadhibou"
-  wilaya          String   // e.g., "Dakhlet Nouadhibou"
-  
+  id     String @id @default(uuid())
+  name   String // e.g., "TVM Nouadhibou"
+  wilaya String // e.g., "Dakhlet Nouadhibou"
+
   // Contact Info
   contactName     String?
   contactPhone    String?
   contactEmail    String?
   contactWhatsapp String?
-  
-  users     User[]
+
+  users       User[]
   allocations Allocation[]
   expenses    Expense[]
-  
-  balance     Float    @default(0)
-  
+
+  balance Float @default(0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  deletedAt DateTime?
 }
 
 model Allocation {
   id        String   @id @default(uuid())
   amount    Float
-  reference String   // e.g. "Budget Q1 2026"
+  reference String // e.g. "Budget Q1 2026"
   notes     String?
   date      DateTime @default(now())
-  
-  branchId  String
-  branch    Branch   @relation(fields: [branchId], references: [id])
-  
+
+  branchId String
+  branch   Branch @relation(fields: [branchId], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  deletedAt DateTime?
 }
 
 model Expense {
   id          String   @id @default(uuid())
   amount      Float
   description String
-  category    String   // e.g. TRANSPORT, FOOD, SUPPLIES, OTHER
+  category    String // e.g. TRANSPORT, FOOD, SUPPLIES, OTHER
   status      String   @default("PENDING") // PENDING, APPROVED, REJECTED
   date        DateTime @default(now())
-  
-  userId      String
-  user        User     @relation(fields: [userId], references: [id])
-  
-  branchId    String
-  branch      Branch   @relation(fields: [branchId], references: [id])
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  branchId String
+  branch   Branch @relation(fields: [branchId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model AuditLog {
+  id       String @id @default(uuid())
+  entity   String // e.g., "Expense", "Allocation"
+  entityId String
+  action   String // "CREATE", "UPDATE", "DELETE", "SOFT_DELETE"
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  timestamp DateTime @default(now())
+  details   String? // JSON string of changes or snapshot
+  reason    String? // Justification for the change
 }

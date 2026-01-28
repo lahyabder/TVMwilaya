@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Providers } from '@/components/Providers';
 import '@/app/globals.css';
 import { Cairo, Inter } from 'next/font/google';
 
@@ -41,11 +42,13 @@ export default async function LocaleLayout({
         <html lang={locale} dir={dir}>
             <body className={`${cairo.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-tvm-grey text-tvm-text`}>
                 <NextIntlClientProvider messages={messages}>
-                    <Header />
-                    <main className="flex-grow container mx-auto px-4 py-8">
-                        {children}
-                    </main>
-                    <Footer />
+                    <Providers>
+                        <Header />
+                        <main className="flex-grow container mx-auto px-4 py-8">
+                            {children}
+                        </main>
+                        <Footer />
+                    </Providers>
                 </NextIntlClientProvider>
             </body>
         </html>

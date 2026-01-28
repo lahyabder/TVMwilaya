@@ -30,7 +30,21 @@ export default function LoginPage() {
                 setError(t('error'));
                 setLoading(false);
             } else {
-                router.push('/admin');
+                // Fetch session to check role
+                const response = await fetch('/api/auth/session');
+                const session = await response.json();
+
+                const role = session?.user?.role;
+
+                if (role === 'BRANCH_MANAGER') {
+                    // Redirect Branch Manager to Expenses or create expense? or their branch view
+                    // Let's send them to their expenses for now, or just /admin/expenses
+                    router.push('/admin/expenses');
+                } else {
+                    // Admin goes to dashboard
+                    router.push('/admin');
+                }
+
                 router.refresh();
             }
         } catch (err) {

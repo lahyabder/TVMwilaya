@@ -3,6 +3,7 @@ import { Link } from '@/i18n/routing';
 import { Plus, Trash2, PieChart, Calendar, FileText, Pencil } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { getFormatter } from 'next-intl/server';
+import DeleteAllocationButton from './DeleteAllocationButton';
 
 export default async function AllocationsPage({
     params
@@ -77,9 +78,7 @@ export default async function AllocationsPage({
                                         <Link href={`/admin/allocations/${alloc.id}/edit`} className="text-blue-500 hover:text-blue-700 p-2 rounded hover:bg-blue-50 transition" title={t('edit')}>
                                             <Pencil className="w-4 h-4" />
                                         </Link>
-                                        <button className="text-red-500 hover:text-red-700 p-2 rounded hover:bg-red-50 transition" title="Delete">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
+                                        <DeleteAllocationButton id={alloc.id} />
                                     </td>
                                 </tr>
                             ))}

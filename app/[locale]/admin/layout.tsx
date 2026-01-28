@@ -5,6 +5,7 @@ import { Link, usePathname } from '@/i18n/routing';
 import { Home, MapPin, Users, PieChart, FileText, Settings, LogOut } from 'lucide-react';
 import clsx from 'clsx';
 import { use } from 'react';
+import { useSession, signOut } from 'next-auth/react';
 
 // Layout can be async in Server Components, but this file has 'use client' at top?
 // Ah, 'use client' means it's a Client Component. Client Components CANNOT be async.
@@ -31,14 +32,19 @@ export default function AdminLayout({
     const tCommon = useTranslations('Common');
     const pathname = usePathname();
 
-    const navigation = [
-        { name: tNav('dashboard'), href: '/admin', icon: Home },
-        { name: tNav('branches'), href: '/admin/branches', icon: MapPin },
-        { name: tNav('users'), href: '/admin/users', icon: Users },
-        { name: tNav('allocations'), href: '/admin/allocations', icon: PieChart },
-        { name: tNav('expenses'), href: '/admin/expenses', icon: FileText },
-        { name: tNav('settings'), href: '/admin/settings', icon: Settings },
+    const { data: session } = useSession();
+    const role = session?.user?.role;
+
+    const allNavigation = [
+        { name: tNav('dashboard'), href: '/admin', icon: Home, roles: ['ADMIN_FINANCE'] },
+        { name: tNav('branches'), href: '/admin/branches', icon: MapPin, roles: ['ADMIN_FINANCE'] },
+        { name: tNav('users'), href: '/admin/users', icon: Users, roles: ['ADMIN_FINANCE'] },
+        { name: tNav('allocations'), href: '/admin/allocations', icon: PieChart, roles: ['ADMIN_FINANCE', 'BRANCH_MANAGER'] },
+        { name: tNav('expenses'), href: '/admin/expenses', icon: FileText, roles: ['ADMIN_FINANCE', 'BRANCH_MANAGER'] },
+        { name: tNav('settings'), href: '/admin/settings', icon: Settings, roles: ['ADMIN_FINANCE', 'BRANCH_MANAGER'] },
     ];
+
+    const navigation = allNavigation.filter(item => !role || item.roles.includes(role));
 
     return (
         <div className="flex h-screen bg-gray-50 direction-rtl">
@@ -72,7 +78,7 @@ export default function AdminLayout({
 
                 <div className="p-4 border-t border-blue-800">
                     <button
-                        // onClick={() => signOut()}
+                        onClick={() => signOut({ callbackUrl: '/' })}
                         className="flex items-center w-full px-4 py-2 text-sm text-blue-200 hover:text-white transition-colors"
                     >
                         <LogOut className={clsx("w-5 h-5", locale === 'ar' ? 'ml-3' : 'mr-3')} />
@@ -88,11 +94,14 @@ export default function AdminLayout({
                         {t('portal_title')}
                     </h2>
                     <div className="flex items-center gap-4">
-                        <div className="text-sm text-gray-500">
-                            {t('role_admin')}
+                        <div className="text-right">
+                            <div className="text-sm font-medium text-gray-900">{session?.user?.name}</div>
+                            <div className="text-xs text-gray-500">
+                                {role === 'ADMIN_FINANCE' ? t('role_admin') : t('role_manager')}
+                            </div>
                         </div>
                         <div className="w-8 h-8 bg-tvm-blue/10 text-tvm-blue rounded-full flex items-center justify-center font-bold">
-                            A
+                            {session?.user?.name?.charAt(0) || 'U'}
                         </div>
                     </div>
                 </header>
