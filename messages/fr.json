@@ -1,0 +1,155 @@
+{
+    "Common": {
+        "title": "Système de Gestion des Dépenses - TVM",
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue",
+        "save": "Enregistrer",
+        "edit": "Modifier",
+        "cancel": "Annuler",
+        "language": "Langue",
+        "logout": "Déconnexion"
+    },
+    "Navigation": {
+        "home": "Accueil",
+        "dashboard": "Tableau de bord",
+        "login": "Connexion",
+        "logout": "Déconnexion"
+    },
+    "Auth": {
+        "welcome": "Bienvenue",
+        "login_subtitle": "Veuillez vous connecter pour continuer"
+    },
+    "AdminLayout": {
+        "title": "Admin TVM",
+        "subtitle": "Système Financier",
+        "portal_title": "Portail Admin",
+        "role_admin": "Admin Finance",
+        "nav": {
+            "dashboard": "Tableau de Bord",
+            "branches": "Branches",
+            "users": "Utilisateurs",
+            "allocations": "Allocations",
+            "expenses": "Dépenses",
+            "settings": "Paramètres"
+        }
+    },
+    "Branches": {
+        "title": "Gestion des Branches",
+        "subtitle": "Gérer les bureaux régionaux et antennes TVM",
+        "add_new": "Ajouter une branche",
+        "empty_state": "Aucune branche trouvée",
+        "empty_subtitle": "Commencez par ajouter une nouvelle branche",
+        "table": {
+            "name": "Nom de la branche",
+            "wilaya": "Wilaya",
+            "contact": "Contact",
+            "staff_count": "Effectif",
+            "actions": "Actions"
+        },
+        "create": {
+            "title": "Ajouter une nouvelle branche",
+            "back": "Retour à la liste",
+            "name_label": "Nom de la branche",
+            "name_placeholder": "ex: TVM Nouadhibou",
+            "wilaya_label": "Wilaya / Région",
+            "wilaya_placeholder": "ex: Dakhlet Nouadhibou",
+            "contact_info": "Informations de Contact",
+            "contact_name": "Nom du Responsable",
+            "contact_phone": "Téléphone",
+            "contact_email": "Email",
+            "contact_whatsapp": "WhatsApp",
+            "save_btn": "Enregistrer",
+            "saving": "Enregistrement..."
+        }
+    },
+    "Users": {
+        "title": "Gestion des Utilisateurs",
+        "subtitle": "Gérer les administrateurs et chefs de bureau",
+        "add_new": "Ajouter un utilisateur",
+        "empty_state": "Aucun utilisateur trouvé",
+        "table": {
+            "name": "Nom",
+            "role": "Rôle",
+            "branch": "Branche",
+            "email": "Email",
+            "actions": "Actions"
+        },
+        "create": {
+            "title": "Ajouter un nouvel utilisateur",
+            "back": "Retour à la liste",
+            "name_label": "Nom complet",
+            "name_placeholder": "ex: Ahmed Mohamed",
+            "email_label": "Email",
+            "email_placeholder": "example@tvm.mr",
+            "password_label": "Mot de passe",
+            "role_label": "Rôle",
+            "role_manager": "Chef de Branche",
+            "role_admin": "Admin Finance",
+            "branch_label": "Branche Assignée",
+            "select_branch": "-- Sélectionner une branche --",
+            "save_btn": "Enregistrer",
+            "saving": "Enregistrement..."
+        }
+    },
+    "Allocations": {
+        "title": "Gestion des Allocations",
+        "subtitle": "Enregistrer les budgets alloués aux branches",
+        "add_new": "Nouvelle Allocation",
+        "empty_state": "Aucune allocation enregistrée",
+        "table": {
+            "reference": "Référence",
+            "branch": "Branche",
+            "amount": "Montant",
+            "date": "Date",
+            "notes": "Notes",
+            "actions": "Actions"
+        },
+        "create": {
+            "title": "Enregistrer une nouvelle allocation",
+            "back": "Retour à la liste",
+            "branch_label": "Branche Bénéficiaire",
+            "select_branch": "-- Sélectionner une branche --",
+            "amount_label": "Montant (UM)",
+            "amount_placeholder": "0.00",
+            "reference_label": "Référence",
+            "reference_placeholder": "ex: Budget Janvier 2026",
+            "notes_label": "Notes supplémentaires",
+            "notes_placeholder": "Détails...",
+            "save_btn": "Enregistrer",
+            "saving": "Enregistrement..."
+        }
+    },
+    "Expenses": {
+        "title": "Dépenses",
+        "subtitle": "Suivi des dépenses des branches",
+        "add_new": "Nouvelle Dépense",
+        "empty_state": "Aucune dépense enregistrée",
+        "table": {
+            "description": "Description",
+            "category": "Catégorie",
+            "branch": "Branche",
+            "amount": "Montant",
+            "date": "Date",
+            "status": "Statut",
+            "by": "Par",
+            "actions": "Actions"
+        },
+        "create": {
+            "title": "Enregistrer une dépense",
+            "back": "Retour à la liste",
+            "branch_label": "Branche",
+            "select_branch": "-- Sélectionner --",
+            "description_label": "Description",
+            "description_placeholder": "Objet de la dépense",
+            "category_label": "Catégorie",
+            "amount_label": "Montant",
+            "save_btn": "Soumettre",
+            "saving": "Envoi..."
+        },
+        "status": {
+            "pending": "En attente",
+            "approved": "Approuvé",
+            "rejected": "Rejeté"
+        }
+    }
+}

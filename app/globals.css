@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-arabic: var(--font-cairo);
+  
+  /* TVM Institutional Colors */
+  --color-tvm-blue: #003399; /* Deep Official Blue */
+  --color-tvm-blue-light: #3b82f6;
+  --color-tvm-grey: #f3f4f6; /* Light Grey Background */
+  --color-tvm-text: #1f2937; /* Dark Grey Text */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --tvm-blue: #003399;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), var(--font-cairo), sans-serif;
 }

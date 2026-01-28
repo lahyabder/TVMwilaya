@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   // ADMIN_FINANCE, BRANCH_MANAGER
+  branchId  String?
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  expenses  Expense[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Branch {
+  id        String   @id @default(uuid())
+  name      String   // e.g., "TVM Nouadhibou"
+  wilaya          String   // e.g., "Dakhlet Nouadhibou"
+  
+  // Contact Info
+  contactName     String?
+  contactPhone    String?
+  contactEmail    String?
+  contactWhatsapp String?
+  
+  users     User[]
+  allocations Allocation[]
+  expenses    Expense[]
+  
+  balance     Float    @default(0)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Allocation {
+  id        String   @id @default(uuid())
+  amount    Float
+  reference String   // e.g. "Budget Q1 2026"
+  notes     String?
+  date      DateTime @default(now())
+  
+  branchId  String
+  branch    Branch   @relation(fields: [branchId], references: [id])
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  amount      Float
+  description String
+  category    String   // e.g. TRANSPORT, FOOD, SUPPLIES, OTHER
+  status      String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  date        DateTime @default(now())
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  
+  branchId    String
+  branch      Branch   @relation(fields: [branchId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

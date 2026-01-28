@@ -1,0 +1,155 @@
+{
+  "Common": {
+    "title": "نظام تسيير مصاريف فروع التلفزة الموريتانية",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "cancel": "إلغاء",
+    "language": "اللغة",
+    "logout": "تسجيل الخروج"
+  },
+  "Navigation": {
+    "home": "الرئيسية",
+    "dashboard": "لوحة التحكم",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج"
+  },
+  "Auth": {
+    "welcome": "مرحبًا بك",
+    "login_subtitle": "يرجى تسجيل الدخول للمتابعة"
+  },
+  "AdminLayout": {
+    "title": "إدارة التلفزة",
+    "subtitle": "النظام المالي",
+    "portal_title": "بوابة الإدارة",
+    "role_admin": "مدير مالي",
+    "nav": {
+      "dashboard": "لوحة التحكم",
+      "branches": "الفروع",
+      "users": "المستخدمين",
+      "allocations": "المخصصات",
+      "expenses": "المصاريف",
+      "settings": "الإعدادات"
+    }
+  },
+  "Branches": {
+    "title": "إدارة الفروع",
+    "subtitle": "إدارة المكاتب الجهوية والفروع التابعة للتلفزة",
+    "add_new": "إضافة فرع جديد",
+    "empty_state": "لا توجد فروع حاليا",
+    "empty_subtitle": "ابدا باضافة فرع جديد",
+    "table": {
+      "name": "اسم الفرع",
+      "wilaya": "الولاية",
+      "contact": "جهة الاتصال",
+      "staff_count": "عدد الموظفين",
+      "actions": "إجراءات"
+    },
+    "create": {
+      "title": "إضافة فرع جديد",
+      "back": "العودة للقائمة",
+      "name_label": "اسم الفرع",
+      "name_placeholder": "مثال: مكتب نواذيبو",
+      "wilaya_label": "الولاية / المنطقة",
+      "wilaya_placeholder": "مثال: داخلة نواذيبو",
+      "contact_info": "معلومات الاتصال",
+      "contact_name": "الاسم المسؤول",
+      "contact_phone": "الهاتف",
+      "contact_email": "البريد الإلكتروني",
+      "contact_whatsapp": "واتساب",
+      "save_btn": "حفظ الفرع",
+      "saving": "جاري الحفظ..."
+    }
+  },
+  "Users": {
+    "title": "إدارة المستخدمين",
+    "subtitle": "إدارة المدراء والموظفين والصلاحيات",
+    "add_new": "إضافة مستخدم",
+    "empty_state": "لا يوجد مستخدمين",
+    "table": {
+      "name": "الاسم",
+      "role": "الدور",
+      "branch": "الفرع",
+      "email": "البريد الإلكتروني",
+      "actions": "إجراءات"
+    },
+    "create": {
+      "title": "إضافة مستخدم جديد",
+      "back": "العودة للقائمة",
+      "name_label": "الاسم الكامل",
+      "name_placeholder": "مثال: أحمد محمد",
+      "email_label": "البريد الإلكتروني",
+      "email_placeholder": "example@tvm.mr",
+      "password_label": "كلمة المرور",
+      "role_label": "الدور الوظيفي",
+      "role_manager": "مدير فرع",
+      "role_admin": "مدير مالي (Admin)",
+      "branch_label": "الفرع المخصص",
+      "select_branch": "-- اختر الفرع --",
+      "save_btn": "حفظ المستخدم",
+      "saving": "جاري الحفظ..."
+    }
+  },
+  "Allocations": {
+    "title": "إدارة المخصصات",
+    "subtitle": "تسجيل الميزانيات المخصصة للفروع",
+    "add_new": "تسجيل مخصص جديد",
+    "empty_state": "لا توجد مخصصات مسجلة",
+    "table": {
+      "reference": "المرجع / البيان",
+      "branch": "الفرع",
+      "amount": "المبلغ",
+      "date": "التاريخ",
+      "notes": "ملاحظات",
+      "actions": "إجراءات"
+    },
+    "create": {
+      "title": "تسجيل مخصص مالي جديد",
+      "back": "العودة للقائمة",
+      "branch_label": "الفرع المستفيد",
+      "select_branch": "-- اختر الفرع --",
+      "amount_label": "المبلغ (أوقية)",
+      "amount_placeholder": "0.00",
+      "reference_label": "المرجع / البيان",
+      "reference_placeholder": "مثال: ميزانية يناير 2026",
+      "notes_label": "ملاحظات إضافية",
+      "notes_placeholder": "أي تفاصيل أخرى...",
+      "save_btn": "حفظ المخصص",
+      "saving": "جاري الحفظ..."
+    }
+  },
+  "Expenses": {
+    "title": "المصاريف",
+    "subtitle": "تتبع مصاريف الفروع وحالتها",
+    "add_new": "تسجيل مصروف جديد",
+    "empty_state": "لا توجد مصاريف مسجلة",
+    "table": {
+      "description": "الوصف",
+      "category": "الفئة",
+      "branch": "الفرع",
+      "amount": "المبلغ",
+      "date": "التاريخ",
+      "status": "الحالة",
+      "by": "سجل بواسطة",
+      "actions": "إجراءات"
+    },
+    "create": {
+      "title": "تسجيل مصروف جديد",
+      "back": "العودة للقائمة",
+      "branch_label": "الفرع",
+      "select_branch": "-- اختر الفرع --",
+      "description_label": "الوصف / البيان",
+      "description_placeholder": "مثال: شراء قرطاسية",
+      "category_label": "نوع المصروف",
+      "amount_label": "المبلغ (أوقية)",
+      "save_btn": "إرسال للموافقة",
+      "saving": "جاري الإرسال..."
+    },
+    "status": {
+      "pending": "في الانتظار",
+      "approved": "تمت الموافقة",
+      "rejected": "مرفوض"
+    }
+  }
+}
