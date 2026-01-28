@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter } from '@/i18n/routing';
-// import { signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 export default function LoginPage() {
     const t = useTranslations('Auth');
@@ -56,7 +56,8 @@ export default function LoginPage() {
     return (
         <div className="flex justify-center items-center min-h-[60vh]">
             <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                <h1 className="text-2xl font-bold text-tvm-blue text-center mb-6">{t('welcome')}</h1>
+                <h1 className="text-2xl font-bold text-tvm-blue text-center mb-2">{t('welcome')}</h1>
+                <p className="text-gray-500 text-center mb-6">{t('login_subtitle')}</p>
 
                 {error && (
                     <div className="bg-red-50 text-red-600 p-3 rounded mb-4 text-sm text-center">
